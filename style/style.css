@@ -469,4 +469,7 @@ footer {
   .view-point-card:last-child:nth-child(4n - 2) {
     margin: 1rem 4rem;
   }
+  .banner .banner-title {
+    font-size: 2rem;
+  }
 }
