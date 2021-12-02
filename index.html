@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <!-- fontawesome CDN -->
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>台灣旅遊景點導覽</title>
+  </head>
+  <body>
+    <div class="information">
+      <div class="information-card">
+        <button class="cancel-btn"><i class="fas fa-window-close"></i></button>
+        <div class="card-content"></div>
+      </div>
+    </div>
+
+    <header>
+      <div class="hamburger-bar"><i class="fas fa-align-justify"></i></div>
+
+      <div class="logo">
+        <a href="#" class="eng-logo"
+          >Taiwan <span class="first">太</span><span class="middle">好</span><span class="last">玩</span
+          ><span class="end">!</span>
+        </a>
+      </div>
+
+      <div class="header-links">
+        <button data-type="ScenicSpot" class="headerBtn active">熱門景點</button>
+        <button data-type="Restaurant" class="headerBtn">探索美食</button>
+        <button data-type="Hotel" class="headerBtn">住宿飯店</button>
+      </div>
+    </header>
+
+    <div class="banner">
+      <p class="banner-title">立即開始你的美好旅程</p>
+      <div class="banner-search">
+        <div class="area">
+          <div class="title">
+            <p>全台</p>
+            <i class="fas fa-angle-down"></i>
+          </div>
+          <div class="area-list">
+            <div data-location="all">全台</div>
+            <div data-location="north">北部</div>
+            <div data-location="central">中部</div>
+            <div data-location="south">南部</div>
+            <div data-location="east">東部</div>
+            <!-- <div data-location="west">西部</div> -->
+            <div data-location="outlying-islands">外島</div>
+          </div>
+        </div>
+      </div>
+      <div class="area-item"></div>
+    </div>
+
+    <section class="view-point" id="view-point">
+      <h3 class="title">熱門景點</h3>
+      <div class="view-point-group"></div>
+    </section>
+
+    <footer>此為作品練習，非商業使用</footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js"
+      integrity="sha512-Kg0CewqPNO/ziOJuCq5eyl3P/V6OLz/Lb1I2m+yKS3lHZcGVFN/KOew18rWP+kTsL7haYdaqGjwHQCZrN0heLQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js"
+      integrity="sha512-mvfoZwdzM8yPhlNxN1lU8S5wcfC5aPRCD3W0jsOeA+D75MMCrycxQqIvt6K7c5P7jItn7AXiAreuR+eockUHwQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script/script.js"></script>
+  </body>
+</html>
