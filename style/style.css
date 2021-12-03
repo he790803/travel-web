@@ -452,8 +452,24 @@ footer {
   }
   .area-item .city {
     width: 70px;
-
     margin: 10px;
+  }
+  .header-links .headerBtn {
+    backdrop-filter: none;
+  }
+  .header-links .headerBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    background: transparent;
+    transform: none;
+    transition: none;
+  }
+  .header-links .headerBtn:hover::before {
+    transform: none;
   }
 }
 
