@@ -57,7 +57,7 @@
   let cardData = [];
   // 暫存API抓取回來的所有資料
   let scrollY = 0;
-
+  let card = ``;
   let getApiContent = function () {
     axios
       .get(`https://ptx.transportdata.tw/MOTC/v2/Tourism/${type}${location}?$top=10&$skip=${skip}&$format=JSON`, {
@@ -69,30 +69,51 @@
         resData.forEach((item, index) => {
           cardData.push(item);
           if (!item.Picture.PictureUrl1) {
-            item.Picture.PictureUrl1 = `https://picsum.photos/280/280/?random=${index}`;
+            item.Picture.PictureUrl1 = `../style/images/istockphoto-1354776450-170667a.jpg`;
           }
           if (!item.Address) {
             item.Address = '無地址資訊';
           }
           if (type === 'ScenicSpot') {
             sectionTitle.innerHTML = '熱門景點';
+            view += `
+            <div class="view-point-card ${item.ID}">
+              <div class="pic">
+                <img src="${item.Picture.PictureUrl1}" />
+              </div>
+              <div class="txt">
+                <h3 class="card-title">${item.ScenicSpotName}</h3>
+                <div class="address">${item.Address}</div>
+              </div>
+            </div>
+            `;
           } else if (type === 'Restaurant') {
             sectionTitle.innerHTML = '探索美食';
+            view += `
+            <div class="view-point-card ${item.ID}">
+              <div class="pic">
+                <img src="${item.Picture.PictureUrl1}" />
+              </div>
+              <div class="txt">
+                <h3 class="card-title">${item.RestaurantName}</h3>
+                <div class="address">${item.Address}</div>
+              </div>
+            </div>
+            `;
           } else if (type === 'Hotel') {
             sectionTitle.innerHTML = '住宿飯店';
+            view += `
+            <div class="view-point-card ${item.ID}">
+              <div class="pic">
+                <img src="${item.Picture.PictureUrl1}" />
+              </div>
+              <div class="txt">
+                <h3 class="card-title">${item.HotelName}</h3>
+                <div class="address">${item.Address}</div>
+              </div>
+            </div>
+            `;
           }
-          view += `
-                    <div class="view-point-card ${item.ID}">
-                      <div class="pic">
-                        <img src="${item.Picture.PictureUrl1}" />
-                      </div>
-                      <div class="txt">
-                        <h3 class="card-title">${item.Name}</h3>
-                        <div class="address">${item.Address}</div>
-                      </div>
-                    </div>
-                  
-                    `;
         });
         viewPointGroup.innerHTML = view;
 
@@ -100,9 +121,9 @@
         const cards = document.querySelectorAll('.view-point-card');
         cards.forEach((card, index) => {
           card.addEventListener('click', function () {
-            if (!cardData[index].Picture.PictureUrl1) {
-              cardData[index].Picture.PictureUrl1 = `https://picsum.photos/280/280/?random=${index}`;
-            }
+            // if (!cardData[index].Picture.PictureUrl1) {
+            //   cardData[index].Picture.PictureUrl1 = `https://picsum.photos/280/280/?random=${index}`;
+            // }
             if (!cardData[index].OpenTime) {
               cardData[index].OpenTime = '無營業時間資訊';
             }
@@ -115,11 +136,12 @@
               cardData[index].TicketInfo = '未提供票價';
             }
 
-            card = `  
-              <h3>${cardData[index].Name}</h3>
+            if (type === 'ScenicSpot') {
+              card = `
+              <h3>${cardData[index].ScenicSpotName}</h3>
               <p><i class="fas fa-map-marker-alt"></i>${cardData[index].Address}</p>
               <p>
-                ${cardData[index].DescriptionDetail || cardData[index].Description}
+                ${cardData[index].DescriptionDetail || cardData[index].Description || '未提供詳細資訊'}
               </p>
               <div class="card-img">
                 <img src="${cardData[index].Picture.PictureUrl1}" />
@@ -128,8 +150,39 @@
                 <span><i class="far fa-clock"></i>${cardData[index].OpenTime}</span>
                 <span><i class="far fa-money-bill-alt"></i>${cardData[index].TicketInfo}</span>
                 <span><i class="fas fa-phone"></i>${cardData[index].Phone}</span>
-                </div>
-                `;
+              </div>`;
+            } else if (type === 'Restaurant') {
+              card = `
+              <h3>${cardData[index].RestaurantName}</h3>
+              <p><i class="fas fa-map-marker-alt"></i>${cardData[index].Address}</p>
+              <p>
+                ${cardData[index].DescriptionDetail || cardData[index].Description || '未提供詳細資訊'}
+              </p>
+              <div class="card-img">
+                <img src="${cardData[index].Picture.PictureUrl1}" />
+              </div>
+              <div class="card-tag-group">
+                <span><i class="far fa-clock"></i>${cardData[index].OpenTime}</span>
+                <span><i class="far fa-money-bill-alt"></i>${cardData[index].TicketInfo}</span>
+                <span><i class="fas fa-phone"></i>${cardData[index].Phone}</span>
+              </div>`;
+            } else if (type === 'Hotel') {
+              card = `
+              <h3>${cardData[index].HotelName}</h3>
+              <p><i class="fas fa-map-marker-alt"></i>${cardData[index].Address}</p>
+              <p>
+                ${cardData[index].DescriptionDetail || cardData[index].Description || '未提供詳細資訊'}
+              </p>
+              <div class="card-img">
+                <img src="${cardData[index].Picture.PictureUrl1}" />
+              </div>
+              <div class="card-tag-group">
+                <span><i class="far fa-clock"></i>${cardData[index].OpenTime}</span>
+                <span><i class="far fa-money-bill-alt"></i>${cardData[index].TicketInfo}</span>
+                <span><i class="fas fa-phone"></i>${cardData[index].Phone}</span>
+              </div>`;
+            }
+
             cardContent.innerHTML = card;
             if (document.body.className === 'active') {
               // document.body.classList.remove('active');
