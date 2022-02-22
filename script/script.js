@@ -69,7 +69,7 @@
         resData.forEach((item, index) => {
           cardData.push(item);
           if (!item.Picture.PictureUrl1) {
-            item.Picture.PictureUrl1 = `../style/images/istockphoto-1354776450-170667a.jpg`;
+            item.Picture.PictureUrl1 = `https://raw.githubusercontent.com/he798003/travel-web/master/style/images/istockphoto-1354776450-170667a.jpg`;
           }
           if (!item.Address) {
             item.Address = '無地址資訊';
