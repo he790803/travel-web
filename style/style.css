@@ -362,7 +362,7 @@ section .title {
 }
 /* 如果最後一行是2個元素 */
 .view-point-card:last-child:nth-child(4n - 2) {
-  margin-right: calc(46% + 15.6% / 3);
+  margin-right: calc(46% + 20% / 4);
 }
 .view-point-group .view-point-card .pic {
   height: 200px;
