@@ -9,6 +9,7 @@
   const sectionTitle = document.querySelector('.view-point > .title');
   const hamburgerBar = document.querySelector('.hamburger-bar');
   const faDown = document.querySelector('.fa-angle-down');
+  const title = document.querySelector('.area .title');
   const area = document.querySelector('.banner-search .area');
   const areaList = document.querySelectorAll('.area-list');
   const areaItem = document.querySelector('.area-item');
@@ -261,7 +262,7 @@
   });
   // 漢堡選單切換
 
-  faDown.addEventListener('click', function () {
+  title.addEventListener('click', function () {
     area.classList.toggle('active');
   });
   // 縣市選取上下箭頭切換

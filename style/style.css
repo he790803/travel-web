@@ -245,13 +245,15 @@ header {
   height: 50px;
 }
 
+.banner-search .title,
+.banner-search .fa-angle-down {
+  cursor: pointer;
+}
 .banner-search .fa-angle-down {
   position: absolute;
   top: 30%;
   right: 10%;
-
   font-size: 1.5rem;
-  cursor: pointer;
   transition: transform 0.5s ease-in;
 }
 
