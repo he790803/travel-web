@@ -220,7 +220,7 @@
     informationCard.classList.remove('active');
     information.classList.remove('active');
     document.documentElement.style.overflow = 'auto';
-    console.log(e.target);
+    // console.log(e.target);
   });
   // 取消詳細資料頁面
 
@@ -243,7 +243,7 @@
 
   headerLinks.forEach((btn) => {
     btn.addEventListener('click', linkApiHandler);
-    console.log(btn);
+    // console.log(btn);
   });
   // 替所有headerLinks添加點擊事件
 
@@ -288,6 +288,7 @@
           cities = city.filter((item) => {
             return item.area === '北部';
           });
+
           cities.forEach((item) => {
             areaItem.innerHTML += `<div class='city' data-city='${item.value}'>${item.name}</div>`;
           });
